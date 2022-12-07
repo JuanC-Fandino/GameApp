@@ -14,4 +14,7 @@ export const GameScreenStyle = StyleSheet.create({
     borderRadius: 6,
     color: 'white',
   },
+  buttonsContainer: {
+    flexDirection: 'row',
+  },
 });

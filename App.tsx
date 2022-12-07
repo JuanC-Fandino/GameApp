@@ -10,7 +10,7 @@ import {
 import StartGameScreen from './src/screens/StartGameScreen/StartGameScreen';
 import LinearGradient from 'react-native-linear-gradient';
 import GameScreen from './src/screens/GameScreen/GameScreen';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Colors from './src/constants/Colors';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -18,13 +18,12 @@ const App = () => {
 
   function pickedNumberHandler(pickedNumber: any) {
     setUserNumber(parseInt(pickedNumber, 10));
-    console.log(pickedNumber);
   }
 
   let screen = <StartGameScreen onPickFunction={pickedNumberHandler} />;
 
   if (userNumber > 0) {
-    screen = <GameScreen />;
+    screen = <GameScreen userNumber={userNumber} />;
   }
 
   const linearGradientColors = isDarkMode
