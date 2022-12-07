@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextInput, View } from 'react-native';
-import PrimaryButton from '../../components/PrimaryButton';
+import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import { StartGameScreenStyle } from './StartGameScreen.style';
 
 interface StartGameScreenProps {
@@ -17,6 +17,10 @@ function StartGameScreen(props: StartGameScreenProps) {
     setEnteredValue('');
   }
 
+  function confirmHandler() {
+    props.onPickFunction(enteredValue);
+  }
+
   return (
     <View style={StartGameScreenStyle.inputContainer}>
       <TextInput
@@ -28,7 +32,7 @@ function StartGameScreen(props: StartGameScreenProps) {
       />
       <View style={StartGameScreenStyle.buttonsContainer}>
         <PrimaryButton onPress={resetInputField}>Resetear</PrimaryButton>
-        <PrimaryButton onPress={props.onPickFunction}>Confirmar</PrimaryButton>
+        <PrimaryButton onPress={confirmHandler}>Confirmar</PrimaryButton>
       </View>
     </View>
   );

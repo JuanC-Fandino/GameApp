@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
 import Colors from '../../constants/Colors';
 
-export const GameScreenStyle = StyleSheet.create({
-  mainContainer: {
-    padding: 16,
-    flex: 1,
+export const TitleStyle = StyleSheet.create({
+  view: {
+    backgroundColor: Colors.secondary500,
+    borderRadius: 8,
+    padding: 8,
+    marginBottom: 8,
   },
-  title: {
+  text: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    backgroundColor: Colors.secondary500,
-    borderRadius: 6,
     color: 'white',
   },
 });

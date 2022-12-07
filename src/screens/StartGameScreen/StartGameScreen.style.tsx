@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Colors from '../../constants/Colors';
 
 export const StartGameScreenStyle = StyleSheet.create({
   inputContainer: {
@@ -7,7 +8,7 @@ export const StartGameScreenStyle = StyleSheet.create({
     padding: 16,
     borderRadius: 6,
     elevation: 8, // Only for Android
-    backgroundColor: 'gray',
+    backgroundColor: Colors.secondary500,
     // Only for iOS
     shadowColor: 'black',
     shadowOffset: {
@@ -21,10 +22,10 @@ export const StartGameScreenStyle = StyleSheet.create({
     borderRadius: 6,
     height: 50,
     fontSize: 32,
-    borderBottomColor: 'orange',
+    borderBottomColor: Colors.primary500,
     borderBottomWidth: 2,
     marginBottom: 16,
-    color: 'orange',
+    color: Colors.primary500,
     fontWeight: 'bold',
     textAlign: 'center',
   },
