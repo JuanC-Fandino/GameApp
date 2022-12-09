@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-
 export const GameOverScreenStyle = StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -17,6 +16,15 @@ export const GameOverScreenStyle = StyleSheet.create({
     width: 300,
     height: 300,
     borderRadius: 300,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginVertical: 8,
+    overflow: 'hidden',
+  },
+  imageContainerLandscape: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
     justifyContent: 'center',
     alignSelf: 'center',
     marginVertical: 8,

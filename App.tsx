@@ -68,7 +68,19 @@ const App = () => {
           style={styles.backgroundGradient}
           imageStyle={styles.backgroundStyle}>
           <SafeAreaView style={styles.backgroundGradient}>
+            {/*The next two components are used to make sure the content is
+            displayed correctly on all devices. The KeyboardAvoidingView
+            component is used to make sure the content is displayed correctly
+            when the keyboard is open. The ScrollView component is used to make
+            sure the content is displayed correctly when the device is rotated.*/}
+
+            {/*<ScrollView>
+              <KeyboardAvoidingView
+                style={styles.backgroundGradient}
+                behavior={'position'}>*/}
             {screen}
+            {/*</KeyboardAvoidingView>
+            </ScrollView>*/}
           </SafeAreaView>
         </ImageBackground>
       </LinearGradient>

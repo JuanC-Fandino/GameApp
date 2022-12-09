@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, useWindowDimensions, View } from 'react-native';
 import Title from '../../components/Title/Title';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import { GameOverScreenStyle } from './GameOverScreen.style';
@@ -12,10 +12,17 @@ interface GameOverScreenProps {
 
 function GameOverScreen(props: GameOverScreenProps) {
   const { handleResetFn, rounds } = props;
+  const { height } = useWindowDimensions();
+
   return (
     <View style={GameOverScreenStyle.container}>
       <Title style={GameOverScreenStyle.title}>Game Over!</Title>
-      <View style={GameOverScreenStyle.imageContainer}>
+      <View
+        style={
+          height < 500
+            ? GameOverScreenStyle.imageContainerLandscape
+            : GameOverScreenStyle.imageContainer
+        }>
         <Image
           style={GameOverScreenStyle.image}
           source={require('../../assets/images/victoria.jpg')}
