@@ -17,6 +17,7 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [userNumber, setUserNumber] = useState(0);
   const [hasWon, setHasWon] = useState(false);
+  const [rounds, setRounds] = useState(0);
 
   function pickedNumberHandler(pickedNumber: any) {
     setUserNumber(parseInt(pickedNumber, 10));
@@ -29,15 +30,23 @@ const App = () => {
   function handleReset() {
     setHasWon(false);
     setUserNumber(0);
+    setRounds(0);
   }
 
   let screen = <StartGameScreen onPickFunction={pickedNumberHandler} />;
 
   if (userNumber > 0 && !hasWon) {
-    screen = <GameScreen userNumber={userNumber} handleWin={handleWin} />;
+    screen = (
+      <GameScreen
+        userNumber={userNumber}
+        handleWin={handleWin}
+        rounds={rounds}
+        setRounds={setRounds}
+      />
+    );
   }
   if (hasWon) {
-    screen = <GameOverScreen handleResetFn={handleReset} />;
+    screen = <GameOverScreen handleResetFn={handleReset} rounds={rounds} />;
   }
 
   const linearGradientColors = isDarkMode

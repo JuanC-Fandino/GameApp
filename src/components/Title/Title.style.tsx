@@ -13,5 +13,6 @@ export const TitleStyle = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white',
+    fontFamily: 'Source Code Pro',
   },
 });

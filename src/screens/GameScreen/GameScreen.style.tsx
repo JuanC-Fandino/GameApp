@@ -31,4 +31,14 @@ export const GameScreenStyle = StyleSheet.create({
   buttonOuterStyle: {
     width: 100,
   },
+  labelRecord: {
+    marginVertical: 16,
+  },
+  labelRecordInner: {
+    fontSize: 24,
+  },
+  guessText: {
+    fontSize: 18,
+    color: 'white',
+  },
 });

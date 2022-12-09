@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert, FlatList, Text, View } from 'react-native';
 import { GameScreenStyle } from './GameScreen.style';
 import Title from '../../components/Title/Title';
 import NumberContainer from '../../components/NumberContainer/NumberContainer';
@@ -19,13 +19,24 @@ function generateRandomBetween(
   }
 }
 
+interface GameScreenProps {
+  userNumber: number;
+  handleWin: () => void;
+  setRounds: (rounds: number) => void;
+  rounds: number;
+}
+
 // @ts-ignore
-function GameScreen(this: any, { userNumber, handleWin }) {
+function GameScreen(this: any, props: GameScreenProps) {
+  const { userNumber, handleWin, setRounds, rounds } = props;
   const [min, setMin] = useState(1);
   const [max, setMax] = useState(100);
   const [hasChanged, setHasChanged] = useState(false);
+  const [guessesList, setGuessesList] = useState<Array<number>>([]);
 
-  const [deviceNumber, setDeviceNumber] = useState(0);
+  const [deviceNumber, setDeviceNumber] = useState(
+    generateRandomBetween(1, 100, userNumber),
+  );
 
   function nextGuessHandler(direction: string) {
     if (
@@ -38,10 +49,10 @@ function GameScreen(this: any, { userNumber, handleWin }) {
       return;
     }
     if (direction === 'lower') {
-      setMax(deviceNumber + 1);
+      setMax(deviceNumber);
       setHasChanged(true);
     } else {
-      setMin(deviceNumber);
+      setMin(deviceNumber + 1);
       setHasChanged(true);
     }
   }
@@ -50,6 +61,8 @@ function GameScreen(this: any, { userNumber, handleWin }) {
     if (hasChanged) {
       setDeviceNumber(generateRandomBetween(min, max, deviceNumber));
       setHasChanged(false);
+      setRounds(rounds + 1);
+      setGuessesList([...guessesList, deviceNumber]);
     }
   }, [min, max, hasChanged, deviceNumber]);
 
@@ -80,6 +93,23 @@ function GameScreen(this: any, { userNumber, handleWin }) {
           </PrimaryButton>
         </View>
       </Card>
+      <Title
+        style={GameScreenStyle.labelRecord}
+        innerStyle={GameScreenStyle.labelRecordInner}>
+        Intentos
+      </Title>
+      <FlatList
+        data={guessesList}
+        renderItem={item => {
+          return (
+            <Card>
+              <Text style={GameScreenStyle.guessText}>
+                {item.item.toString()}
+              </Text>
+            </Card>
+          );
+        }}
+      />
       <View />
     </View>
   );
