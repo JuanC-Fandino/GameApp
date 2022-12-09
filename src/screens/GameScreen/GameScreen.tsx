@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, FlatList, Text, View } from 'react-native';
 import { GameScreenStyle } from './GameScreen.style';
+// @ts-ignore
 import Title from '../../components/Title/Title';
 import NumberContainer from '../../components/NumberContainer/NumberContainer';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';

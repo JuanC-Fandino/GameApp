@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Text, useWindowDimensions, View } from 'react-native';
+// @ts-ignore
 import Title from '../../components/Title/Title';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import { GameOverScreenStyle } from './GameOverScreen.style';
