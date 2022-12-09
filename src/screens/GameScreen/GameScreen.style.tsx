@@ -14,7 +14,21 @@ export const GameScreenStyle = StyleSheet.create({
     borderRadius: 6,
     color: 'white',
   },
+  container: {
+    color: 'white',
+    fontSize: 20,
+    alignSelf: 'center',
+  },
   buttonsContainer: {
+    marginVertical: 8,
+    justifyContent: 'center',
     flexDirection: 'row',
+  },
+  buttonTextStyle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  buttonOuterStyle: {
+    width: 100,
   },
 });

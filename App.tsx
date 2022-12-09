@@ -11,19 +11,33 @@ import StartGameScreen from './src/screens/StartGameScreen/StartGameScreen';
 import LinearGradient from 'react-native-linear-gradient';
 import GameScreen from './src/screens/GameScreen/GameScreen';
 import Colors from './src/constants/Colors';
+import GameOverScreen from './src/screens/GameOverScreen/GameOverScreen';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [userNumber, setUserNumber] = useState(0);
+  const [hasWon, setHasWon] = useState(false);
 
   function pickedNumberHandler(pickedNumber: any) {
     setUserNumber(parseInt(pickedNumber, 10));
   }
 
+  function handleWin() {
+    setHasWon(true);
+  }
+
+  function handleReset() {
+    setHasWon(false);
+    setUserNumber(0);
+  }
+
   let screen = <StartGameScreen onPickFunction={pickedNumberHandler} />;
 
-  if (userNumber > 0) {
-    screen = <GameScreen userNumber={userNumber} />;
+  if (userNumber > 0 && !hasWon) {
+    screen = <GameScreen userNumber={userNumber} handleWin={handleWin} />;
+  }
+  if (hasWon) {
+    screen = <GameOverScreen handleResetFn={handleReset} />;
   }
 
   const linearGradientColors = isDarkMode

@@ -3,13 +3,13 @@ import Colors from '../../constants/Colors';
 
 export const TitleStyle = StyleSheet.create({
   view: {
-    backgroundColor: Colors.secondary500,
+    backgroundColor: Colors.primary500,
     borderRadius: 8,
-    padding: 8,
+    padding: 16,
     marginBottom: 8,
   },
   text: {
-    fontSize: 24,
+    fontSize: 36,
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white',

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { TextInput, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import { StartGameScreenStyle } from './StartGameScreen.style';
+import Title from '../../components/Title/Title';
+import Card from '../../components/Card/Card';
 
 interface StartGameScreenProps {
   onPickFunction: any;
@@ -22,18 +24,22 @@ function StartGameScreen(props: StartGameScreenProps) {
   }
 
   return (
-    <View style={StartGameScreenStyle.inputContainer}>
-      <TextInput
-        style={StartGameScreenStyle.input}
-        maxLength={2}
-        keyboardType={'number-pad'}
-        value={enteredValue}
-        onChangeText={numberInputHandler}
-      />
-      <View style={StartGameScreenStyle.buttonsContainer}>
-        <PrimaryButton onPress={resetInputField}>Resetear</PrimaryButton>
-        <PrimaryButton onPress={confirmHandler}>Confirmar</PrimaryButton>
-      </View>
+    <View style={StartGameScreenStyle.rootContainer}>
+      <Title>Adivina el Número</Title>
+      <Card>
+        <Text style={StartGameScreenStyle.container}>Ingresa un Número</Text>
+        <TextInput
+          style={StartGameScreenStyle.input}
+          maxLength={2}
+          keyboardType={'number-pad'}
+          value={enteredValue}
+          onChangeText={numberInputHandler}
+        />
+        <View style={StartGameScreenStyle.buttonsContainer}>
+          <PrimaryButton onPress={resetInputField}>Resetear</PrimaryButton>
+          <PrimaryButton onPress={confirmHandler}>Confirmar</PrimaryButton>
+        </View>
+      </Card>
     </View>
   );
 }

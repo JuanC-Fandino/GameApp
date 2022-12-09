@@ -6,12 +6,11 @@ export const NumberContainerStyle = StyleSheet.create({
     padding: 24,
     alignItems: 'center',
     borderRadius: 6,
-    borderColor: Colors.primary500,
-    backgroundColor: Colors.primary500,
+    backgroundColor: Colors.secondary600,
   },
   numberText: {
     color: 'white',
-    fontSize: 36,
+    fontSize: 32,
     fontWeight: 'bold',
   },
 });

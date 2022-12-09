@@ -4,6 +4,7 @@ import { GameScreenStyle } from './GameScreen.style';
 import Title from '../../components/Title/Title';
 import NumberContainer from '../../components/NumberContainer/NumberContainer';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+import Card from '../../components/Card/Card';
 
 function generateRandomBetween(
   min: number,
@@ -19,7 +20,7 @@ function generateRandomBetween(
 }
 
 // @ts-ignore
-function GameScreen(this: any, { userNumber }) {
+function GameScreen(this: any, { userNumber, handleWin }) {
   const [min, setMin] = useState(1);
   const [max, setMax] = useState(100);
   const [hasChanged, setHasChanged] = useState(false);
@@ -54,27 +55,31 @@ function GameScreen(this: any, { userNumber }) {
 
   useEffect(() => {
     if (deviceNumber === userNumber) {
-      Alert.alert('Ganaste!', 'Has adivinado el número', [
-        { text: 'Reiniciar', onPress: () => {} },
-      ]);
+      handleWin();
     }
-  }, [deviceNumber, userNumber]);
+  }, [deviceNumber, handleWin, userNumber]);
 
   return (
     <View style={GameScreenStyle.mainContainer}>
       <Title>Número predicho</Title>
       <NumberContainer>{deviceNumber}</NumberContainer>
-      <View>
-        <Text>¿Mayor o menor?</Text>
+      <Card>
+        <Text style={GameScreenStyle.container}>¿Mayor o menor?</Text>
         <View style={GameScreenStyle.buttonsContainer}>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+          <PrimaryButton
+            outerStyle={GameScreenStyle.buttonOuterStyle}
+            textStyle={GameScreenStyle.buttonTextStyle}
+            onPress={nextGuessHandler.bind(this, 'lower')}>
             -
           </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+          <PrimaryButton
+            outerStyle={GameScreenStyle.buttonOuterStyle}
+            textStyle={GameScreenStyle.buttonTextStyle}
+            onPress={nextGuessHandler.bind(this, 'greater')}>
             +
           </PrimaryButton>
         </View>
-      </View>
+      </Card>
       <View />
     </View>
   );

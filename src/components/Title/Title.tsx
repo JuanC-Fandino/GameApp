@@ -1,15 +1,16 @@
-import { Text, TextProps, View } from 'react-native';
+import { StyleProp, Text, TextProps, View, ViewStyle } from 'react-native';
 import React from 'react';
 import { TitleStyle } from './Title.style';
 
 interface TitleProps extends TextProps {
   children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
 }
 
 function Title(props: TitleProps) {
-  const { children } = props;
+  const { children, style } = props;
   return (
-    <View style={TitleStyle.view}>
+    <View style={[TitleStyle.view, style]}>
       <Text style={TitleStyle.text}>{children}</Text>
     </View>
   );
